@@ -14,6 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
+        // dd('BlogController@index');
         $posts = BlogPost::all(); // Fetch all blog posts
         return view('blog::index', compact('posts'));
     }
@@ -35,6 +36,7 @@ class BlogController extends Controller
 
         // Save the validated data to the database
         $blogPost = BlogPost::create($validatedData);
+        $blogPost->save();
 
         // Redirect to the index page with a success message
         return redirect()
