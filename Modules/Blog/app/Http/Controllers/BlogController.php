@@ -4,6 +4,8 @@ namespace Modules\Blog\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Blog\Http\Requests\StoreBlogRequest;
+use Modules\Blog\Models\BlogPost;
 
 class BlogController extends Controller
 {
@@ -12,7 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog::index', ['posts' => ['Post 1', 'Post 2', 'Post 3']]);
+        $posts = BlogPost::all(); // Fetch all blog posts
+        return view('blog::index', compact('posts'));
     }
 
     /**
@@ -26,9 +29,17 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBlogRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        // Save the validated data to the database
+        $blogPost = BlogPost::create($validatedData);
+
+        // Redirect to the index page with a success message
+        return redirect()
+            ->route('blog.index')
+            ->with('success', 'Blog post "' . $blogPost->title . '" created successfully!');
     }
 
     /**
