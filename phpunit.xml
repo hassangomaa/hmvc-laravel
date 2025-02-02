@@ -6,10 +6,12 @@
 >
     <testsuites>
         <testsuite name="Unit">
-            <directory>tests/Unit</directory>
+        <directory suffix="Test.php">tests/Unit</directory>
+        <directory suffix="Test.php">Modules/Blog/tests/Unit</directory>
         </testsuite>
         <testsuite name="Feature">
-            <directory>tests/Feature</directory>
+        <directory suffix="Test.php">tests/Feature</directory>
+        <directory suffix="Test.php">Modules/Blog/tests/Feature</directory>
         </testsuite>
     </testsuites>
     <source>
@@ -22,6 +24,8 @@
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_STORE" value="array"/>
+        <env name="DB_CONNECTION" value="mysql"/> 
+        <env name="DB_DATABASE" value="hmvc_laravel"/>
         <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
         <!-- <env name="DB_DATABASE" value=":memory:"/> -->
         <env name="MAIL_MAILER" value="array"/>
