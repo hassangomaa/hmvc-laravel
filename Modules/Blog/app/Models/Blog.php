@@ -4,7 +4,7 @@ namespace Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Modules\Blog\Database\Factories\BlogFactory;
+use Modules\Blog\Database\Factories\BlogFactory;
 
 class Blog extends Model
 {
@@ -15,8 +15,8 @@ class Blog extends Model
      */
     protected $fillable = ['title', 'content']; // Add the fields you want to allow mass assignment
 
-    // protected static function newFactory(): BlogFactory
-    // {
-    //     // return BlogFactory::new();
-    // }
+    protected static function newFactory(): BlogFactory
+    {
+        return BlogFactory::new();
+    }
 }
