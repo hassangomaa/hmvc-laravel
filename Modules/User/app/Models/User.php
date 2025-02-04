@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\User\Database\Factories\UserFactory;
 
-class User  extends Authenticatable 
+class User extends Authenticatable
 {
-    use HasFactory,  HasApiTokens;
+    use HasFactory, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -21,8 +22,8 @@ class User  extends Authenticatable
         'email_verified_at',
     ];
 
-    // protected static function newFactory(): UserFactory
-    // {
-    //     // return UserFactory::new();
-    // }
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
 }

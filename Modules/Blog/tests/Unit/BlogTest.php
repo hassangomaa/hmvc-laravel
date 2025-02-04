@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BlogTest extends TestCase
 {
-    use RefreshDatabase; 
+    // use RefreshDatabase; 
 
     public function test_blog_factory_creates_valid_model()
     {
