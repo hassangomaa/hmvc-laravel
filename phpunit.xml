@@ -8,10 +8,12 @@
         <testsuite name="Unit">
         <directory suffix="Test.php">tests/Unit</directory>
         <directory suffix="Test.php">Modules/Blog/tests/Unit</directory>
+        <directory suffix="Test.php">Modules/User/tests/Unit</directory>
         </testsuite>
         <testsuite name="Feature">
         <directory suffix="Test.php">tests/Feature</directory>
         <directory suffix="Test.php">Modules/Blog/tests/Feature</directory>
+        <directory suffix="Test.php">Modules/User/tests/Feature</directory>
         </testsuite>
     </testsuites>
     <source>

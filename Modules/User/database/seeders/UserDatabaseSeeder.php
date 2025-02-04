@@ -12,5 +12,7 @@ class UserDatabaseSeeder extends Seeder
     public function run(): void
     {
         // $this->call([]);
+
+        \Modules\User\Models\User::factory()->count(5)->create();
     }
 }

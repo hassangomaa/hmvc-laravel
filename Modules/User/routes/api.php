@@ -16,22 +16,14 @@ use App\Http\Middleware\EnforceJsonResponse;
  */
 
 
-
-
-
-
 Route::middleware(['api', 'auth:sanctum', EnforceJsonResponse::class])->prefix('v1')->group(function () {
     Route::prefix('users')->group(function () {
-        Route::get('/', [UserController::class, 'index']); // List all users
-        Route::post('/', [UserController::class, 'store']); // Create a new user
-        Route::get('/{id}', [UserController::class, 'show']); // Show a single user
-        Route::put('/{id}', [UserController::class, 'update']); // Update a user
-        Route::delete('/{id}', [UserController::class, 'destroy']); // Delete a user
+        Route::get('/', [UserController::class, 'index'])->name('users.index'); // List all users
+        Route::post('/', [UserController::class, 'store'])->name('users.store'); // Create a new user
+        Route::get('/{id}', [UserController::class, 'show'])->name('users.show'); // Get a user
+        Route::put('/{id}', [UserController::class, 'update'])->name('users.update'); // Update a user
+        Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy'); // Delete a user
     });
-
 
 });
 
-
-
-// Route::apiResource( 'v1/users', controller: UserController::class);
