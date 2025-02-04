@@ -10,7 +10,7 @@ use Modules\User\Services\UserService;
 use Modules\User\Transformers\UserResource;
 
 class UserController extends Controller
-{
+{   
     protected UserService $userService;
 
     /**
@@ -26,6 +26,7 @@ class UserController extends Controller
      */
     public function index(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
+        // dd('here');
         $users = $this->userService->getAllUsers();
         return UserResource::collection($users);
     }
