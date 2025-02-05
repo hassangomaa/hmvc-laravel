@@ -11,14 +11,14 @@ use Tests\TestCase;
 
 class UserApiTest extends TestCase
 {
-    // use RefreshDatabase;
+    use RefreshDatabase;
 
     protected function setUp(): void
     {
 
         parent::setUp();
-
-        $this->actingAs(User::first());
+        $users = User::factory()->count(1)->create();
+        $this->actingAs($users[0]);
     }
 
     public function test_can_list_users()
