@@ -12,7 +12,7 @@ class BlogTest extends TestCase
 
     // /** @test */
     public function it_can_create_a_blog_post_using_controller()
-    // use RefreshDatabase; 
+    // use RefreshDatabase;
     {
         $blog = Blog::factory()->create();
 
