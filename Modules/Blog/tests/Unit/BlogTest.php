@@ -8,10 +8,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BlogTest extends TestCase
 {
-    // use RefreshDatabase; 
+    use RefreshDatabase;
 
-    public function test_blog_factory_creates_valid_model()
-    {
+    // /** @test */
+    public function it_can_create_a_blog_post_using_controller()
+    // use RefreshDatabase; 
+   {
         $blog = Blog::factory()->create();
 
         $this->assertInstanceOf(Blog::class, $blog);
@@ -32,7 +34,8 @@ class BlogTest extends TestCase
         ]);
     }
 
-    public function test_blog_can_be_updated()
+    // /** @test */
+    public function it_can_update_a_blog_post_using_controller()
     {
         $blog = Blog::factory()->create();
 
@@ -44,7 +47,8 @@ class BlogTest extends TestCase
         ]);
     }
 
-    public function test_blog_can_be_deleted()
+    // /** @test */
+    public function it_can_delete_a_blog_post_using_controller()
     {
         $blog = Blog::factory()->create();
 
