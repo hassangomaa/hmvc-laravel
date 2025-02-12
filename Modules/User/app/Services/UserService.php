@@ -6,7 +6,7 @@ use Modules\User\Repositories\UserRepository;
 
 class UserService
 {
-    protected  UserRepository $userRepository;
+    protected UserRepository $userRepository;
 
     /**
      * Inject the UserRepository.

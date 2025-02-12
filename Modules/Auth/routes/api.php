@@ -18,7 +18,6 @@ use Modules\Auth\Http\Controllers\AuthController;
 //     Route::apiResource('auth', AuthController::class)->names('auth');
 // });
 
-
 Route::middleware('guest')
     ->prefix('v1')
     ->group(

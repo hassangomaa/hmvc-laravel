@@ -1,11 +1,8 @@
 <?php
 
-
-
 namespace Modules\User\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Modules\User\Models\User;
 use Tests\TestCase;
 
@@ -29,8 +26,8 @@ class UserApiTest extends TestCase
             ->assertStatus(200)
             ->assertJsonStructure([
                 'data' => [
-                    '*' => ['id', 'name', 'email', 'created_at', 'updated_at']
-                ]
+                    '*' => ['id', 'name', 'email', 'created_at', 'updated_at'],
+                ],
             ]);
     }
 
@@ -45,11 +42,11 @@ class UserApiTest extends TestCase
         $this->postJson(route('api.users.store'), $payload)
             ->assertStatus(201)
             ->assertJsonStructure([
-                'data' => ['id', 'name', 'email', 'created_at', 'updated_at']
+                'data' => ['id', 'name', 'email', 'created_at', 'updated_at'],
             ]);
 
         $this->assertDatabaseHas('users', [
-            'email' => $payload['email']
+            'email' => $payload['email'],
         ]);
     }
 
@@ -78,8 +75,8 @@ class UserApiTest extends TestCase
                 'data' => [
                     'id' => $user->id,
                     'name' => $user->name,
-                    'email' => $user->email
-                ]
+                    'email' => $user->email,
+                ],
             ]);
     }
 
@@ -98,13 +95,13 @@ class UserApiTest extends TestCase
             ->assertJson([
                 'data' => [
                     'name' => $payload['name'],
-                    'email' => $payload['email']
-                ]
+                    'email' => $payload['email'],
+                ],
             ]);
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
-            'email' => $payload['email']
+            'email' => $payload['email'],
         ]);
     }
 

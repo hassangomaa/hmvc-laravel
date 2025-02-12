@@ -3,11 +3,11 @@
 namespace Modules\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Exception; // Import Exception for error handling
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator; // Import Exception for error handling
 use Modules\User\Models\User;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -18,9 +18,9 @@ class AuthController extends Controller
         // Validation
         $validator = Validator::make($request->all(), [
 
-            "name" => "required|string|max:255",
-            "email" => "required|string|max:255|unique:users",
-            "password" => "required|string|min:6",
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:6',
 
         ]);
         if ($validator->fails()) {
@@ -32,40 +32,34 @@ class AuthController extends Controller
             DB::beginTransaction();
             $token = '1111';
             $user = User::create([
-                "name" => $request->name,
-                "email" => $request->email,
-                "phone" => $request->phone,
-                "lang" => $request->lang ?? 'en',
-                "country_code" => $request->country_code ?? '+20',
-                "password" => bcrypt($request->password),
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'lang' => $request->lang ?? 'en',
+                'country_code' => $request->country_code ?? '+20',
+                'password' => bcrypt($request->password),
                 'email_verification_token' => $token,
                 'email_verified_at' => now(),
             ]);
-
 
             DB::commit();
 
             $token = $authToken = $user->createToken('auth-token')->plainTextToken;
 
-
-
             return response()->json([
                 'message' => 'check your email to verify your account',
                 'token' => $token,
-                'user' => $user
+                'user' => $user,
             ], 200);
-
-
 
         } catch (\Exception $e) {
 
             DB::rollBack();
+
             return response()->json(['error' => $e->getMessage()], 500);
         }
 
-
     }
-
 
     public function deleteAccount(Request $request)
     {
@@ -86,11 +80,12 @@ class AuthController extends Controller
             DB::commit();
 
             return response()->json([
-                'message' => 'Your account has been successfully deleted.'
+                'message' => 'Your account has been successfully deleted.',
             ], 200);
         } catch (\Exception $e) {
             // Rollback transaction in case of an error
             DB::rollBack();
+
             return response()->json([
                 'status' => 500,
                 'message' => 'Something went wrong.',
@@ -104,9 +99,9 @@ class AuthController extends Controller
         $id = $request->user()->id;
         $validator = Validator::make($request->all(), [
 
-            "name" => "required|string|max:255",
-            "email" => "required|string|email|max:255|unique:users,email," . $id,
-            "password" => "required|string|min:6",
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
+            'password' => 'required|string|min:6',
 
         ]);
 
@@ -118,10 +113,10 @@ class AuthController extends Controller
         $user = User::findOrFail($id);
         $user->update([
 
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => bcrypt($request->password),
-            "user_type" => $request->user_type,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'user_type' => $request->user_type,
         ]);
         // return the updated user with a token
         $token = JWTAuth::fromUser($user);
@@ -133,7 +128,6 @@ class AuthController extends Controller
             ]
         );
     }
-
 
     public function login(Request $request)
     {
@@ -153,9 +147,8 @@ class AuthController extends Controller
         // Determine the field name to search based on the input type
         $fieldName = $isEmail ? 'email' : 'phone';
 
-
         // Attempt to authenticate the user based on email or phone number
-        if (!Auth::attempt([$fieldName => $request->input('emailOrPhone'), 'password' => $request->input('password')])) {
+        if (! Auth::attempt([$fieldName => $request->input('emailOrPhone'), 'password' => $request->input('password')])) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
         // dd($fieldName);
@@ -165,20 +158,19 @@ class AuthController extends Controller
         if ($user->email_verified_at == null) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Account not verified'
+                'message' => 'Account not verified',
             ]);
         }
 
         $token = $authToken = $user->createToken('auth-token')->plainTextToken;
+
         return response()->json([
             'token' => $token,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
-
-
-    #profile
+    // profile
     public function profile()
     {
         return response()->json(Auth::user());
@@ -191,6 +183,4 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Logged out successfully']);
     }
-
-
 }

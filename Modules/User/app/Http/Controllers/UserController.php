@@ -3,14 +3,13 @@
 namespace Modules\User\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-
 use Modules\User\Http\Requests\StoreUserRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
 use Modules\User\Services\UserService;
 use Modules\User\Transformers\UserResource;
 
 class UserController extends Controller
-{   
+{
     protected UserService $userService;
 
     /**
@@ -28,6 +27,7 @@ class UserController extends Controller
     {
         // dd('here');
         $users = $this->userService->getAllUsers();
+
         return UserResource::collection($users);
     }
 
@@ -37,6 +37,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request): UserResource
     {
         $user = $this->userService->createUser($request->validated());
+
         return new UserResource($user);
     }
 
@@ -46,6 +47,7 @@ class UserController extends Controller
     public function show($id): UserResource
     {
         $user = $this->userService->getUserById($id);
+
         return new UserResource($user);
     }
 
@@ -55,6 +57,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id): UserResource
     {
         $user = $this->userService->updateUser($id, $request->validated());
+
         return new UserResource($user);
     }
 
@@ -64,6 +67,7 @@ class UserController extends Controller
     public function destroy($id): \Illuminate\Http\JsonResponse
     {
         $this->userService->deleteUser($id);
+
         return response()->json(['message' => 'User deleted successfully.'], 200);
     }
 }

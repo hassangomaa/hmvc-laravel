@@ -2,9 +2,8 @@
 
 namespace Modules\Blog\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Modules\Blog\Http\Requests\BlogRequest;
 use App\Http\Controllers\Controller;
+use Modules\Blog\Http\Requests\BlogRequest;
 use Modules\Blog\Models\Blog;
 
 class BlogController extends Controller
@@ -12,6 +11,7 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::latest()->paginate(10);
+
         return view('blog::index', compact('blogs'));
     }
 
@@ -23,6 +23,7 @@ class BlogController extends Controller
     public function store(BlogRequest $request)
     {
         Blog::create($request->validated());
+
         return redirect()->route('blogs.index')->with('success', 'Blog created successfully.');
     }
 
@@ -39,12 +40,14 @@ class BlogController extends Controller
     public function update(BlogRequest $request, Blog $blog)
     {
         $blog->update($request->validated());
+
         return redirect()->route('blogs.index')->with('success', 'Blog updated successfully.');
     }
 
     public function destroy(Blog $blog)
     {
         $blog->delete();
+
         return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully.');
     }
 }

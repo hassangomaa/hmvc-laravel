@@ -17,8 +17,8 @@ it('can list users', function () {
         ->assertStatus(200)
         ->assertJsonStructure([
             'data' => [
-                '*' => ['id', 'name', 'email', 'created_at', 'updated_at']
-            ]
+                '*' => ['id', 'name', 'email', 'created_at', 'updated_at'],
+            ],
         ]);
 });
 
@@ -32,11 +32,11 @@ it('can create a user', function () {
     $this->postJson(route('api.users.store'), $payload)
         ->assertStatus(201)
         ->assertJsonStructure([
-            'data' => ['id', 'name', 'email', 'created_at', 'updated_at']
+            'data' => ['id', 'name', 'email', 'created_at', 'updated_at'],
         ]);
 
     $this->assertDatabaseHas('users', [
-        'email' => $payload['email']
+        'email' => $payload['email'],
     ]);
 });
 
@@ -63,8 +63,8 @@ it('can view a single user', function () {
             'data' => [
                 'id' => $user->id,
                 'name' => $user->name,
-                'email' => $user->email
-            ]
+                'email' => $user->email,
+            ],
         ]);
 });
 
@@ -82,13 +82,13 @@ it('can update a user', function () {
         ->assertJson([
             'data' => [
                 'name' => $payload['name'],
-                'email' => $payload['email']
-            ]
+                'email' => $payload['email'],
+            ],
         ]);
 
     $this->assertDatabaseHas('users', [
         'id' => $user->id,
-        'email' => $payload['email']
+        'email' => $payload['email'],
     ]);
 });
 

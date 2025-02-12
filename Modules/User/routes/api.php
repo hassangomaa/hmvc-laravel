@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Middleware\EnforceJsonResponse;
 use Illuminate\Support\Facades\Route;
 use Modules\User\Http\Controllers\UserController;
-use App\Http\Middleware\EnforceJsonResponse;
 
 /*
  *--------------------------------------------------------------------------
@@ -15,7 +15,6 @@ use App\Http\Middleware\EnforceJsonResponse;
  *
  */
 
-
 Route::middleware(['api', 'auth:sanctum', EnforceJsonResponse::class])->prefix('v1')->group(function () {
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('users.index'); // List all users
@@ -26,4 +25,3 @@ Route::middleware(['api', 'auth:sanctum', EnforceJsonResponse::class])->prefix('
     });
 
 });
-

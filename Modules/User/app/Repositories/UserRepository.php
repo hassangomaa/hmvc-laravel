@@ -37,6 +37,7 @@ class UserRepository
     {
         $user = $this->findById($id);
         $user->update($data);
+
         return $user;
     }
 
@@ -47,6 +48,7 @@ class UserRepository
     {
         $user = $this->findById($id);
         $user->delete();
+
         return true;
     }
 }

@@ -2,13 +2,13 @@
 
 namespace Modules\Blog\Tests\Unit;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Blog\Models\Blog;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BlogTest extends TestCase
 {
-    // use RefreshDatabase; 
+    // use RefreshDatabase;
 
     public function test_blog_factory_creates_valid_model()
     {
@@ -23,12 +23,12 @@ class BlogTest extends TestCase
     {
         $blog = Blog::create([
             'title' => 'Test Blog',
-            'content' => 'This is a test blog content.'
+            'content' => 'This is a test blog content.',
         ]);
 
         $this->assertDatabaseHas('blogs', [
             'title' => 'Test Blog',
-            'content' => 'This is a test blog content.'
+            'content' => 'This is a test blog content.',
         ]);
     }
 
@@ -40,7 +40,7 @@ class BlogTest extends TestCase
 
         $this->assertDatabaseHas('blogs', [
             'id' => $blog->id,
-            'title' => 'Updated Title'
+            'title' => 'Updated Title',
         ]);
     }
 
@@ -51,7 +51,7 @@ class BlogTest extends TestCase
         $blog->delete();
 
         $this->assertDatabaseMissing('blogs', [
-            'id' => $blog->id
+            'id' => $blog->id,
         ]);
     }
 }
