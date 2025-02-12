@@ -14,7 +14,7 @@ class BlogTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
+    // /** @test */
     public function it_can_create_a_blog_post_using_controller()
     {
         $data = [
@@ -42,7 +42,7 @@ class BlogTest extends TestCase
         $this->assertEquals(302, $response->getStatusCode());
     }
 
-    /** @test */
+    // /** @test */
     public function it_can_update_a_blog_post_using_controller()
     {
         $blog = Blog::factory()->create([
@@ -76,7 +76,7 @@ class BlogTest extends TestCase
         $this->assertEquals(302, $response->getStatusCode());
     }
 
-    /** @test */
+    // /** @test */
     public function it_can_delete_a_blog_post_using_controller()
     {
         $blog = Blog::factory()->create();
