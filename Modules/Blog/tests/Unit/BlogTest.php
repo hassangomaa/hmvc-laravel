@@ -13,9 +13,7 @@ class BlogTest extends TestCase
     // /** @test */
     public function it_can_create_a_blog_post_using_controller()
     // use RefreshDatabase; 
-
-    public function test_blog_factory_creates_valid_model()
-    {
+   {
         $blog = Blog::factory()->create();
 
         $this->assertInstanceOf(Blog::class, $blog);
@@ -38,7 +36,6 @@ class BlogTest extends TestCase
 
     // /** @test */
     public function it_can_update_a_blog_post_using_controller()
-    public function test_blog_can_be_updated()
     {
         $blog = Blog::factory()->create();
 
@@ -52,7 +49,6 @@ class BlogTest extends TestCase
 
     // /** @test */
     public function it_can_delete_a_blog_post_using_controller()
-    public function test_blog_can_be_deleted()
     {
         $blog = Blog::factory()->create();
 
