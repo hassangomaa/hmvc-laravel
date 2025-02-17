@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h2>Create Item</h2>
+    <div class="card p-4">
+        <h2 class="mb-3">Create Item</h2>
         <form @submit.prevent="createItem">
             <div class="mb-3">
                 <label class="form-label">Name</label>

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h2>All Items</h2>
-        <table class="table table-bordered">
-            <thead>
+        <h2 class="mb-3">All Items</h2>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -18,7 +18,19 @@
                     <td>{{ item.name }}</td>
                     <td>${{ item.price }}</td>
                     <td>{{ item.stock }}</td>
-                    <td>{{ item.status }}</td>
+                    <td>
+                        <span
+                            class="badge bg-success"
+                            v-if="item.status === 'available'"
+                            >Available</span
+                        >
+                        <span
+                            class="badge bg-warning"
+                            v-else-if="item.status === 'out_of_stock'"
+                            >Out of Stock</span
+                        >
+                        <span class="badge bg-danger" v-else>Discontinued</span>
+                    </td>
                     <td>
                         <router-link
                             :to="'/edit/' + item.id"
