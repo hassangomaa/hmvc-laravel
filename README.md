@@ -1,66 +1,196 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://laravel.com" target="_blank">
+        <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+    </a>
 </p>
 
-## About Laravel
+<p align="center">
+    <a href="https://github.com/laravel/framework/actions">
+        <img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License">
+    </a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# **HMVC Laravel + Vue.js Full-Stack Application**
+🚀 **Developed by:** **Eng. Hassan Gomaa**  
+📌 **Repository:** [GitHub - hassangomaa/hmvc-laravel](https://github.com/hassangomaa/hmvc-laravel)  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## **🌟 About This Project**
+This project is a **highly modular Laravel application** based on **HMVC architecture**, fully integrated with **Vue.js** for frontend interaction. It includes:
+- ✅ **RESTful API**
+- ✅ **Vue.js SPA (Single Page Application)**
+- ✅ **Blade Views (Laravel MVC)**
+- ✅ **Dockerized Development Environment**
+- ✅ **Unit & Feature Testing**
+- ✅ **GitHub Actions CI/CD Pipeline**
+- ✅ **Full Authentication System**
+- ✅ **Modular Code Structure (HMVC)**
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## **🔹 Features**
+- **🔹 HMVC Architecture**: Organized in **Modules** for better scalability.
+- **🔹 Vue.js Frontend**: Uses Vue 3 (Composition API, Vue Router, Bootstrap).
+- **🔹 Laravel Blade Views**: Traditional MVC with templating support.
+- **🔹 API with Authentication**: Secure REST API endpoints with JWT.
+- **🔹 Dockerized Setup**: Runs using Docker & Docker Compose.
+- **🔹 Unit & Feature Testing**: PHPUnit & Pest for complete test coverage.
+- **🔹 GitHub Actions CI/CD**: Automated testing and deployments.
+- **🔹 Web & API Support**: Vue SPA & Laravel Blade co-exist.
+- **🔹 Pagination & Performance Optimizations**.
+- **🔹 Role-Based Access Control (RBAC)** *(Upcoming Feature).*
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## **🛠️ Tech Stack**
+| Technology  | Usage |
+|-------------|----------------|
+| Laravel 11  | Backend & API  |
+| Vue.js 3    | Frontend (SPA) |
+| Bootstrap 5 | UI Components  |
+| Docker & Docker Compose | Containerized Setup |
+| Nginx       | Web Server |
+| MySQL       | Database |
+| PHPUnit & Pest | Testing |
+| GitHub Actions | CI/CD |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## **📂 Project Structure**
+```
+hmvc-laravel/
+│── app/
+│   ├── Modules/
+│   │   ├── User/            # User Module (CRUD & Auth)
+│   │   ├── Blog/            # Blog Module (CRUD)
+│   │   ├── Item/            # Item Management Module
+│── bootstrap/
+│── config/
+│── database/
+│── docker/
+│── public/
+│── resources/
+│   ├── js/
+│   │   ├── components/      # Vue Components (Navbar, Forms, Tables)
+│   │   ├── views/           # Vue Pages (Home, Create, Edit)
+│   │   ├── router.js        # Vue Router Configuration
+│   │   ├── app.js           # Vue Application Entry
+│   ├── views/
+│   │   ├── layouts/         # Blade Layouts
+│   │   ├── home.blade.php   # Laravel Home View
+│── routes/
+│   ├── api.php              # API Routes
+│   ├── web.php              # Web Routes (Blade & Vue)
+│── tests/
+│   ├── Unit/                # Unit Tests
+│   ├── Feature/             # Feature Tests (API, UI)
+│── .github/
+│   ├── workflows/ci.yml     # GitHub Actions CI/CD Workflow
+│── Dockerfile
+│── docker-compose.yml
+│── vite.config.js           # Vite Configuration for Vue
+│── README.md
+```
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## **🛠️ Installation & Setup**
+### **📌 1. Clone Repository**
+```bash
+git clone https://github.com/hassangomaa/hmvc-laravel.git
+cd hmvc-laravel
+```
 
-## Contributing
+### **📌 2. Docker Setup**
+Ensure **Docker** & **Docker Compose** are installed, then run:
+```bash
+docker-compose up -d
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### **📌 3. Configure Environment**
+Copy the `.env.example` file:
+```bash
+cp .env.example .env
+```
+Then update **database credentials** to match **Docker MySQL settings**.
 
-## Code of Conduct
+### **📌 4. Install Dependencies**
+```bash
+composer install
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **📌 5. Run Migrations & Seed Database**
+```bash
+php artisan migrate --seed
+```
 
-## Security Vulnerabilities
+### **📌 6. Start Laravel Backend**
+```bash
+php artisan serve
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### **📌 7. Start Vue Frontend (Vite)**
+```bash
+npm run dev
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## **🌐 API Endpoints**
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| **GET** | `/api/items` | Get all items (paginated) |
+| **POST** | `/api/items` | Create a new item |
+| **GET** | `/api/items/{id}` | Get item details |
+| **PUT** | `/api/items/{id}` | Update item |
+| **DELETE** | `/api/items/{id}` | Delete item |
+
+---
+
+## **🛠️ Running Tests**
+### **✅ Unit & Feature Tests**
+Run all tests:
+```bash
+php artisan test
+```
+
+Run a specific test:
+```bash
+php artisan test --filter ItemTest
+```
+
+---
+
+## **🐳 Docker Configuration**
+### **📌 Docker-Compose Services**
+
+---
+
+## **🚀 CI/CD with GitHub Actions**
+GitHub Actions is configured to **run tests on every push**.
+
+📌 **`.github/workflows/ci.yml`**
+
+---
+
+## **🎯 Conclusion**
+This **HMVC Laravel + Vue.js project** is designed for **scalability, performance, and modularity**. With **API-driven architecture, Docker support, testing, and CI/CD**, it’s ready for **production deployment**.
+
+🚀 **Developed & Maintained by:**  
+**Eng. Hassan Gomaa**  
+📍 GitHub: [hassangomaa](https://github.com/hassangomaa)  
+
+---
+
+🔥 **Enjoy building with HMVC Laravel + Vue.js!** 🚀
