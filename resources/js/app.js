@@ -1,10 +1,15 @@
-import { createApp } from "vue";
-import Counter from "./components/Counter.vue";
+import { createApp } from "vue"; //vue from library
+import Create from "./views/Create.vue";
 
-const app = createApp({
-  components: {
-	Counter
-  }
-});
-app.component("Counter", Counter);
+// Import Bootstrap CSS & JS
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Home from "./views/Home.vue";
+import Navbar from "./components/Navbar.vue";
+
+const app = createApp();
+app.component("Navbar", Navbar);
+app.component("Create", Create);
+app.component("Home", Home);
+
 app.mount("#app");

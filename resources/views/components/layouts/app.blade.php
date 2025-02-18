@@ -12,10 +12,12 @@
 
 <body>
     <div id="app">
-        {{ $slot }}
+        <Navbar>
+            {{ $slot }}
+        </Navbar>
     </div>
 
-    @vite(['resources/js/main.js'])
+    @vite(['resources/js/app.js'])
 </body>
 
 </html>
