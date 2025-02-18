@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/create', function () {
-    return view('create');
-});
+// Route::get('/create', function () {
+//     return view('create');
+// });
 

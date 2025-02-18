@@ -6,15 +6,19 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Home</a>
+                            <router-link to="/" class="nav-link"
+                                >Home</router-link
+                            >
                         </li>
                         <li class="nav-item">
-                            <a href="/create" class="nav-link">Create New</a>
+                            <router-link to="/create" class="nav-link"
+                                >Create New</router-link
+                            >
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <slot />
+        <router-view></router-view>
     </div>
 </template>
