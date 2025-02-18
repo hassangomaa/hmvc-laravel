@@ -1,3 +1,3 @@
 <x-layouts.app>
-    <Home />
+    <Create />
 </x-layouts.app>

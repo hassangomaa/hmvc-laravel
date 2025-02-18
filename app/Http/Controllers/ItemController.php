@@ -1,10 +1,9 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Item;
+use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
@@ -23,10 +22,11 @@ class ItemController extends Controller
             // 'status' => 'required|in:available,out_of_stock,discontinued',
         ]);
 
-        //fill the status with default value
-        $request->status = "available";
+        // fill the status with default value
+        $request->status = 'available';
 
         $item = Item::create($request->all());
+
         return response()->json($item, 201);
     }
 
@@ -44,17 +44,19 @@ class ItemController extends Controller
             // 'stock' => 'required|integer|min:0',
             // 'status' => 'required|in:available,out_of_stock,discontinued',
         ]);
-        //fill the status with default value
+        // fill the status with default value
         // $request->status = "available";
 
         $item = Item::findOrFail($id);
         $item->update($request->all());
+
         return response()->json($item, 200);
     }
 
     public function destroy($id)
     {
         Item::destroy($id);
+
         return response()->json(null, 204);
     }
 }
