@@ -2,9 +2,8 @@
 
 namespace Modules\User\Observers;
 
-use Modules\User\Models\User;
 use Illuminate\Support\Facades\Log;
-
+use Modules\User\Models\User;
 
 class UserObserver
 {
@@ -14,6 +13,7 @@ class UserObserver
     public function created(User $user)
     {
         Log::info("🟢 User Created: ID {$user->id}, Email: {$user->email}");
+        //
     }
 
     /**
@@ -21,7 +21,7 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        Log::info("🟡 User Updated: ID {$user->id}, Changed Attributes: " . json_encode($user->getChanges()));
+        Log::info("🟡 User Updated: ID {$user->id}, Changed Attributes: ".json_encode($user->getChanges()));
     }
 
     /**
