@@ -1,0 +1,1 @@
+# docker exec -it laravel_app vendor/bin/pint --test
