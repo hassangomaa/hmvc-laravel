@@ -10,6 +10,11 @@ class ItemController extends Controller
     public function index()
     {
         return Item::all();
+        // ##
+        // ##################################
+        // ###########################3
+        // ######################
+        // 55
     }
 
     public function store(Request $request)
