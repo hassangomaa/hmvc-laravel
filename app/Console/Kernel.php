@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('queue:listen')->everyMinute();
         // $schedule->command('queue:work')->everyMinute();
         // $schedule->command('queue:restart')->everyMinute();
-        $schedule->command("queue:work --stop-when-empty")->everyMinute();
+        $schedule->command('queue:work --stop-when-empty')->everyMinute();
 
         // Example: Other scheduled tasks (You can add more)
         // $schedule->command('backup:run')->dailyAt('02:00');
@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__ . '/Commands');
+        $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
     }
