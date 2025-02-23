@@ -120,6 +120,8 @@ jobs:
           send "php artisan queue:restart &\r"
           send "php artisan queue:work --daemon &\r"
           send "php artisan schedule:work &\r"
+          send "/usr/bin/php /home/u313493766/public_html/hmvc-laravel/artisan queue:work --tries=3 --timeout=90 &\r"
+
 
 
           send "exit\r"
