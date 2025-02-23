@@ -84,7 +84,15 @@ jobs:
           send "${{ secrets.SSH_PASSWORD }}\r"
           expect "$ "
           send "cd /home/${{ secrets.SSH_USER }}/public_html/hmvc-laravel/\r"
-          send "git pull origin main\r"
+          # Force fetch latest changes
+          send "git fetch --all --force\r"
+
+          # Hard reset to latest main (discarding local changes)
+          send "git reset --hard origin/main\r"
+
+          # Force pull latest code
+          send "git pull origin main --force\r"
+
           send "composer2 install --no-interaction --prefer-dist --optimize-autoloader\r"
           send "composer2 update --no-interaction\r"
 
