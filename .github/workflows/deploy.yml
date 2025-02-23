@@ -106,3 +106,22 @@ jobs:
           send "exit\r"
           expect eof
           EOF
+      - name: TEST AND RUN CRON JOB
+        run: |
+          expect <<EOF
+          spawn ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+          expect "password:"
+          send "${{ secrets.SSH_PASSWORD }}\r"
+          expect "$ "
+          send "cd /home/${{ secrets.SSH_USER }}/public_html/hmvc-laravel/\r"
+
+          # Run Laravel Tests
+          send "php artisan test\r"
+          send "php artisan queue:restart &\r"
+          send "php artisan queue:work --daemon &\r"
+          send "php artisan schedule:work &\r"
+
+
+          send "exit\r"
+          expect eof
+          EOF
