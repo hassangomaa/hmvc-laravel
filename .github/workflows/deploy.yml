@@ -106,11 +106,6 @@ jobs:
           # Optimize Laravel
           send "composer2 dump-autoload\r"
 
-          # Start Queue Workers
-          send "php artisan queue:restart &\r"
-          send "php artisan queue:work --daemon &\r"
-          send "php artisan schedule:work &\r"
-
           send "exit\r"
           expect eof
           EOF
@@ -124,14 +119,12 @@ jobs:
           send "cd /home/${{ secrets.SSH_USER }}/public_html/hmvc-laravel/\r"
 
           # Run Laravel Tests
-          send "php artisan test\r"
-          send "php artisan queue:restart &\r"
-          send "php artisan queue:work --daemon &\r"
-          send "php artisan schedule:work &\r"
-          send "/usr/bin/php /home/u313493766/public_html/hmvc-laravel/artisan queue:work --tries=3 --timeout=90 &\r"
-
-
-
+          send "php artisan test \r"
+          send "php artisan queue:restart & \r"
+          send "php artisan queue:work --daemon & \r"
+          send "php artisan schedule:work & \r"
+          send "/usr/bin/php /home/u313493766/public_html/hmvc-laravel/artisan queue:work --tries=3 --timeout=90 & \r"
+          send "php artisan schedule:run & \r"
           send "exit\r"
           expect eof
           EOF

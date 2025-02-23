@@ -14,8 +14,8 @@ class Kernel extends ConsoleKernel
     {
         // Run queue worker every minute without overlapping
         // $schedule->command('queue:listen')->everyMinute();
+        $schedule->command('queue:restart')->everyMinute();
         // $schedule->command('queue:work')->everyMinute();
-        // $schedule->command('queue:restart')->everyMinute();
         $schedule->command('queue:work --stop-when-empty')->everyMinute();
 
         // Example: Other scheduled tasks (You can add more)
