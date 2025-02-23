@@ -23,7 +23,7 @@ jobs:
           send "git pull origin main\r"
           send "composer2 install --no-interaction --prefer-dist --optimize-autoloader\r"
           send "composer2 update --no-interaction\r"
-          
+
           # Ensure .env file exists
           send "cp .env.example .env\r"
           send "php artisan key:generate\r"
@@ -39,6 +39,10 @@ jobs:
 
           # Run Laravel Tests
           send "php artisan test\r"
+          send "php artisan queue:restart &\r"
+          send "php artisan queue:work --daemon &\r"
+          send "php artisan schedule:work &\r"
+
 
           send "exit\r"
           expect eof
