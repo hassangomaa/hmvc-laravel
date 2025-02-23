@@ -3,6 +3,8 @@
 namespace Modules\User\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
+use Modules\User\Events\UserRegistered;
 use Modules\User\Http\Requests\StoreUserRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
 use Modules\User\Services\UserService;
@@ -37,6 +39,15 @@ class UserController extends Controller
     public function store(StoreUserRequest $request): UserResource
     {
         $user = $this->userService->createUser($request->validated());
+
+        // Log::info('⚡ Dispatching UserRegistered Event for User ID: '.$user->id);
+        // event(new UserRegistered($user));
+        // Log::info('🚀 UserRegistered Event Dispatched for User ID: '.$user->id);
+        // UserRegistered::dispatch($user);
+
+        Log::info('before dispatching job');
+        dispatch(new \Modules\User\Jobs\ProcessUserRegistered($user));
+        Log::info('after dispatching job');
 
         return new UserResource($user);
     }
