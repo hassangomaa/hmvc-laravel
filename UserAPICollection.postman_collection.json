@@ -1,0 +1,752 @@
+{
+    "info": {
+        "_postman_id": "78a203fd-adda-4567-91de-934e2b5067e6",
+        "name": "User API Collection",
+        "description": "Collection for testing User API endpoints",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "27782819"
+    },
+    "item": [
+        {
+            "name": "Get All Users",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/v1/users",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "v1", "users"]
+                }
+            },
+            "response": [
+                {
+                    "name": "Get All Users",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/users",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "v1", "users"]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Date",
+                            "value": "Tue, 04 Feb 2025 13:53:36 GMT"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+                        },
+                        {
+                            "key": "X-Powered-By",
+                            "value": "PHP/8.2.18"
+                        },
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "Access-Control-Allow-Origin",
+                            "value": "*"
+                        },
+                        {
+                            "key": "Vary",
+                            "value": "Authorization"
+                        },
+                        {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5, max=100"
+                        },
+                        {
+                            "key": "Connection",
+                            "value": "Keep-Alive"
+                        },
+                        {
+                            "key": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test User\",\n            \"email\": \"user@app.com\",\n            \"created_at\": \"2025-02-04 13:51:30\",\n            \"updated_at\": \"2025-02-04 13:51:30\"\n        }\n    ]\n}"
+                }
+            ]
+        },
+        {
+            "name": "Register-User",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "// Extract the token from the response body\r",
+                            "var responseBody = pm.response.json();\r",
+                            "var token = responseBody.token; // Adjust this according to your response structure\r",
+                            "\r",
+                            "// Set the token as the collection-level variable\r",
+                            "pm.collectionVariables.set('jwt_token', token);\r",
+                            ""
+                        ],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer YOUR_ACCESS_TOKEN",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"user@app.com\",\n    \"password\": \"12345678\",\n    \"phone\": \"+1234567890\",\n    \"lang\": \"en\",\n    \"country_code\": \"+20\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/v1/register",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "v1", "register"]
+                }
+            },
+            "response": [
+                {
+                    "name": "Register",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_ACCESS_TOKEN",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"user12@app.com\",\n    \"password\": \"12345678\",\n    \"phone\": \"+1234567890\",\n    \"lang\": \"en\",\n    \"country_code\": \"+20\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/register",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "v1", "register"]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Date",
+                            "value": "Tue, 04 Feb 2025 13:34:08 GMT"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+                        },
+                        {
+                            "key": "X-Powered-By",
+                            "value": "PHP/8.2.18"
+                        },
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "Access-Control-Allow-Origin",
+                            "value": "*"
+                        },
+                        {
+                            "key": "Vary",
+                            "value": "Authorization"
+                        },
+                        {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5, max=100"
+                        },
+                        {
+                            "key": "Connection",
+                            "value": "Keep-Alive"
+                        },
+                        {
+                            "key": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"message\": \"check your email to verify your account\",\n    \"token\": \"1|6T2VpjnpvOYQYM3xnf1XEpYY15BuyURVLIX8HzI959ba0a0a\",\n    \"user\": {\n        \"name\": \"Test User\",\n        \"email\": \"user12@app.com\",\n        \"password\": \"$2y$12$5iUaAyPVgacylVxHIAlL.uD81wfKc7U7ghoVcRcIqrrRshYJWBW1W\",\n        \"updated_at\": \"2025-02-04T13:34:08.000000Z\",\n        \"created_at\": \"2025-02-04T13:34:08.000000Z\",\n        \"id\": 4\n    }\n}"
+                }
+            ]
+        },
+        {
+            "name": "Login",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "// Extract the token from the response body\r",
+                            "var responseBody = pm.response.json();\r",
+                            "var token = responseBody.token; // Adjust this according to your response structure\r",
+                            "\r",
+                            "// Set the token as the collection-level variable\r",
+                            "pm.collectionVariables.set('jwt_token', token);\r",
+                            ""
+                        ],
+                        "type": "text/javascript",
+                        "packages": {}
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer YOUR_ACCESS_TOKEN",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"emailOrPhone\": \"user@app.com\",\n    \"password\": \"12345678\"\n}\n "
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/v1/login",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "v1", "login"]
+                }
+            },
+            "response": [
+                {
+                    "name": "Login",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_ACCESS_TOKEN",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"emailOrPhone\": \"user@app.com\",\n    \"password\": \"12345678\"\n}\n "
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/login",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "v1", "login"]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Date",
+                            "value": "Tue, 04 Feb 2025 13:53:53 GMT"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+                        },
+                        {
+                            "key": "X-Powered-By",
+                            "value": "PHP/8.2.18"
+                        },
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "Access-Control-Allow-Origin",
+                            "value": "*"
+                        },
+                        {
+                            "key": "Vary",
+                            "value": "Authorization"
+                        },
+                        {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5, max=100"
+                        },
+                        {
+                            "key": "Connection",
+                            "value": "Keep-Alive"
+                        },
+                        {
+                            "key": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"token\": \"4|PDbXpUBQpedydbSqBj1nHdCzkA0LvC7DfZejMZ6B628897d3\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Test User\",\n        \"email\": \"user@app.com\",\n        \"password\": \"$2y$12$dZXFo0IkB4tSeRT9EHZB.uLDb1YJjbnTIEWpSRypgPc3WhqWOdxx2\",\n        \"email_verification_token\": null,\n        \"country_code\": null,\n        \"phone\": null,\n        \"lang\": \"en\",\n        \"created_at\": \"2025-02-04T13:51:30.000000Z\",\n        \"updated_at\": \"2025-02-04T13:51:30.000000Z\",\n        \"email_verified_at\": \"2025-02-04 13:51:30\"\n    }\n}"
+                }
+            ]
+        },
+        {
+            "name": "Create User",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer YOUR_ACCESS_TOKEN",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"johnd1987@example.com\",\n  \"password\": \"password123\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/v1/users",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "v1", "users"]
+                }
+            },
+            "response": [
+                {
+                    "name": "Create User Copy",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_ACCESS_TOKEN",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"johndoe@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/users",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "v1", "users"]
+                        }
+                    },
+                    "status": "Created",
+                    "code": 201,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Date",
+                            "value": "Tue, 04 Feb 2025 13:54:11 GMT"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+                        },
+                        {
+                            "key": "X-Powered-By",
+                            "value": "PHP/8.2.18"
+                        },
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "Access-Control-Allow-Origin",
+                            "value": "*"
+                        },
+                        {
+                            "key": "Vary",
+                            "value": "Authorization"
+                        },
+                        {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5, max=100"
+                        },
+                        {
+                            "key": "Connection",
+                            "value": "Keep-Alive"
+                        },
+                        {
+                            "key": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2025-02-04 13:54:11\",\n        \"updated_at\": \"2025-02-04 13:54:11\"\n    },\n    \"success\": true,\n    \"message\": \"User data retrieved successfully.\"\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Single User",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer YOUR_ACCESS_TOKEN",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/v1/users/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "v1", "users", "1"]
+                }
+            },
+            "response": [
+                {
+                    "name": "Get Single User",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_ACCESS_TOKEN",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/users/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "v1", "users", "1"]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Date",
+                            "value": "Tue, 04 Feb 2025 13:55:24 GMT"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+                        },
+                        {
+                            "key": "X-Powered-By",
+                            "value": "PHP/8.2.18"
+                        },
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "Access-Control-Allow-Origin",
+                            "value": "*"
+                        },
+                        {
+                            "key": "Vary",
+                            "value": "Authorization"
+                        },
+                        {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5, max=100"
+                        },
+                        {
+                            "key": "Connection",
+                            "value": "Keep-Alive"
+                        },
+                        {
+                            "key": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Test User\",\n        \"email\": \"user@app.com\",\n        \"created_at\": \"2025-02-04 13:51:30\",\n        \"updated_at\": \"2025-02-04 13:51:30\"\n    },\n    \"success\": true,\n    \"message\": \"User data retrieved successfully.\"\n}"
+                }
+            ]
+        },
+        {
+            "name": "Update User",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer YOUR_ACCESS_TOKEN",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/v1/users/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "v1", "users", "1"]
+                }
+            },
+            "response": [
+                {
+                    "name": "Update User",
+                    "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_ACCESS_TOKEN",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/users/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "v1", "users", "1"]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Date",
+                            "value": "Tue, 04 Feb 2025 13:55:38 GMT"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+                        },
+                        {
+                            "key": "X-Powered-By",
+                            "value": "PHP/8.2.18"
+                        },
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "Access-Control-Allow-Origin",
+                            "value": "*"
+                        },
+                        {
+                            "key": "Vary",
+                            "value": "Authorization"
+                        },
+                        {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5, max=100"
+                        },
+                        {
+                            "key": "Connection",
+                            "value": "Keep-Alive"
+                        },
+                        {
+                            "key": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Updated Name\",\n        \"email\": \"updated@example.com\",\n        \"created_at\": \"2025-02-04 13:51:30\",\n        \"updated_at\": \"2025-02-04 13:55:38\"\n    },\n    \"success\": true,\n    \"message\": \"User data retrieved successfully.\"\n}"
+                }
+            ]
+        },
+        {
+            "name": "Delete User",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer YOUR_ACCESS_TOKEN",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/v1/users/2",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "v1", "users", "2"]
+                }
+            },
+            "response": [
+                {
+                    "name": "Delete User",
+                    "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer YOUR_ACCESS_TOKEN",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/v1/users/2",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "v1", "users", "2"]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Date",
+                            "value": "Tue, 04 Feb 2025 13:55:47 GMT"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q mod_fcgid/2.3.10-dev"
+                        },
+                        {
+                            "key": "X-Powered-By",
+                            "value": "PHP/8.2.18"
+                        },
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-cache, private"
+                        },
+                        {
+                            "key": "Access-Control-Allow-Origin",
+                            "value": "*"
+                        },
+                        {
+                            "key": "Vary",
+                            "value": "Authorization"
+                        },
+                        {
+                            "key": "Keep-Alive",
+                            "value": "timeout=5, max=100"
+                        },
+                        {
+                            "key": "Connection",
+                            "value": "Keep-Alive"
+                        },
+                        {
+                            "key": "Transfer-Encoding",
+                            "value": "chunked"
+                        },
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"message\": \"User deleted successfully.\"\n}"
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{jwt_token}}",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "https://hmvc-laravel.smartleadtech.com",
+            "type": "string",
+            "disabled": true
+        },
+        {
+            "key": "base_url",
+            "value": "https://hmvc-laravel.test",
+            "disabled": true
+        },
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "string"
+        },
+        {
+            "key": "jwt_token",
+            "value": ""
+        }
+    ]
+}
