@@ -1,20 +1,27 @@
-import { createApp } from "vue"; //vue from library
-import Create from "./views/Create.vue";
+import '../css/app.css';
+import './bootstrap';
 
-// Import Bootstrap CSS & JS
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import Home from "./views/Home.vue";
-import Navbar from "./components/Navbar.vue";
-import router from "./router";
+import { createInertiaApp } from '@inertiajs/vue3';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { createApp, h } from 'vue';
+import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
-const app = createApp();
-app.use(router);
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
-
-
-app.component("Navbar", Navbar);
-app.component("Create", Create);
-app.component("Home", Home);
-
-app.mount("#app");
+createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) =>
+        resolvePageComponent(
+            `./Pages/${name}.vue`,
+            import.meta.glob('./Pages/**/*.vue'),
+        ),
+    setup({ el, App, props, plugin }) {
+        return createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .use(ZiggyVue)
+            .mount(el);
+    },
+    progress: {
+        color: '#4B5563',
+    },
+});
